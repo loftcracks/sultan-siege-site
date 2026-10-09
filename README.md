@@ -1,4 +1,4 @@
-# Castle Defense 1453 — destek ve gizlilik sayfaları
+# Sultan Siege (Sultan Kuşatması) — destek ve gizlilik sayfaları
 
 App Store / Google Play için destek, gizlilik politikası ve hesap silme sayfaları.
 

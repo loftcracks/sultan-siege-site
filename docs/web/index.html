@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Castle Defense 1453 — Destek, Gizlilik ve Hesap Silme / Support, Privacy and Account Deletion</title>
+<title>Sultan Kuşatması — Destek, Gizlilik ve Hesap Silme / Support, Privacy and Account Deletion</title>
 <style>
   body { font-family: Georgia, serif; max-width: 640px; margin: 40px auto; padding: 0 20px;
          background: #1d0f0f; color: #e8dcc8; line-height: 1.6; }
@@ -17,8 +17,26 @@
 </head>
 <body>
 
-<h1>Castle Defense 1453</h1>
+<h1>Sultan Kuşatması</h1>
 <p class="sub">Mobil kart-savaş oyunu · Mobile card-battle game</p>
+
+<div id="davet" hidden>
+  <h2>Davet / Invite</h2>
+  <p>Arkadaşının davet kodu / Your friend's invite code:</p>
+  <p><strong id="davet-kod" style="font-size:1.6em;letter-spacing:2px"></strong></p>
+  <p>Oyunu aç → Dostlar → <em>Kod ile Arkadaş Ekle</em> → bu kodu gir.<br>
+     Open the game → Friends → <em>Add Friend by Code</em> → enter this code.</p>
+  <hr>
+</div>
+<script>
+  // Oyun içi "Davet Bağlantısı Paylaş" ?davet=<kod> üretir; kod yalnız harf/rakam olarak gösterilir.
+  (function () {
+    var kod = (new URLSearchParams(location.search).get("davet") || "").replace(/[^A-Za-z0-9]/g, "").slice(0, 32);
+    if (!kod) return;
+    document.getElementById("davet-kod").textContent = kod;
+    document.getElementById("davet").hidden = false;
+  })();
+</script>
 
 <h2>Sayfalar</h2>
 <ul>

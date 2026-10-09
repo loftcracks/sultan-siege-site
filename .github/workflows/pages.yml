@@ -1,6 +1,6 @@
 name: Destek ve gizlilik sayfalari (GitHub Pages)
 
-# Castle Defense 1453 destek, gizlilik ve hesap silme sayfalari.
+# Sultan Siege destek, gizlilik ve hesap silme sayfalari.
 # Sayfalar docs/web/ altindadir; {{...}} yer tutuculari depo DEGISKENLERINDEN
 # (Settings > Secrets and variables > Actions > Variables: YAYINCI_ADI,
 # YAYINCI_ADRES, DESTEK_EPOSTA, SUNUCU_ULKE) doldurulur. Degisken eksikse yayin
