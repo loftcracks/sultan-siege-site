@@ -1,0 +1,62 @@
+name: Destek ve gizlilik sayfalari (GitHub Pages)
+
+# Castle Defense 1453 destek, gizlilik ve hesap silme sayfalari.
+# Sayfalar docs/web/ altindadir; {{...}} yer tutuculari depo DEGISKENLERINDEN
+# (Settings > Secrets and variables > Actions > Variables: YAYINCI_ADI,
+# YAYINCI_ADRES, DESTEK_EPOSTA, SUNUCU_ULKE) doldurulur. Degisken eksikse yayin
+# DURUR; yer tutuculu sayfa yayina cikmaz.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/web/**'
+      - 'tools/web_doldur.py'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sayfalari dogrula (bozuk yayin cikmasin)
+        run: |
+          set -e
+          for f in index.html destek.html gizlilik.html hesap_silme.html; do
+            test -f "docs/web/$f" || { echo "EKSIK: docs/web/$f"; exit 1; }
+            grep -qi 'charset' "docs/web/$f" || { echo "charset meta yok: $f"; exit 1; }
+            python3 -c "open('docs/web/$f',encoding='utf-8').read()" || { echo "UTF-8 degil: $f"; exit 1; }
+          done
+          grep -qi 'mailto:' docs/web/destek.html || { echo "destek sayfasinda iletisim adresi yok"; exit 1; }
+          echo "OK: 4 sayfa, charset + UTF-8 + iletisim adresi dogrulandi"
+
+      - uses: actions/configure-pages@v5
+
+      # Yer tutucular ({{YAYINCI_ADI}} vb.) depo DEGISKENLERINDEN doldurulur (Settings > Secrets and variables >
+      # Actions > Variables: YAYINCI_ADI, YAYINCI_ADRES, DESTEK_EPOSTA, SUNUCU_ULKE). Biri eksikse web_doldur.py
+      # hata verir ve yer tutuculu sayfa YAYINA CIKMAZ.
+      - name: Yer tutuculari doldur
+        run: |
+          python3 tools/web_doldur.py --yayinci "${{ vars.YAYINCI_ADI }}" --adres "${{ vars.YAYINCI_ADRES }}" --eposta "${{ vars.DESTEK_EPOSTA }}" --ulke "${{ vars.SUNUCU_ULKE }}" --cikti _site
+          ! grep -rq "{{" _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
