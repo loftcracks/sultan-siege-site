@@ -15,7 +15,7 @@
 <body>
 <h1>Sultan Kuşatması — Gizlilik Politikası</h1>
 <p>Yayıncı: {{YAYINCI_ADI}} · {{ADRES}}</p>
-<p>Son güncelleme: 9 Ekim 2026</p>
+<p>Son güncelleme: 25 Ekim 2026</p>
 <p><a href="index.html">&larr; Ana sayfa</a> · <a href="destek.html">Destek</a> ·
 <a href="hesap_silme.html">Hesap Silme</a></p>
 
@@ -23,7 +23,9 @@
 <p>Sultan Kuşatması kişisel verinizi <strong>en az düzeyde</strong> toplar. Reklam
 SDK'sı <strong>kullanılmaz</strong>; sizi hiçbir platformlar arası reklam veya analitik
 amacıyla <strong>izlemeyiz</strong>; reklam kimliği (IDFA / Google reklam kimliği)
-<strong>toplamaz ve paylaşmayız</strong>. Bu sürümde izleme izni (ATT) istenmez.</p>
+<strong>toplamaz ve paylaşmayız</strong>. Bu sürümde izleme izni (ATT) istenmez. Bu sürüm
+<strong>analitik verisi toplamaz</strong>: hiçbir analitik veya ölçüm hizmetine (GameAnalytics
+dahil) veri gönderilmez.</p>
 
 <h2>Toplanan veriler ve amaçları</h2>
 <ul>
@@ -45,9 +47,14 @@ paylaşılmaz</strong>.</p>
 
 <h2>Hesap ve oturum</h2>
 <p>Oyun hesabı, cihaz kimliğinizle otomatik oluşturulan bir misafir hesaptır. İsteğe
-bağlı olarak Apple'ın Game Center hizmetiyle (iOS) hesabınızı bağlayabilirsiniz; bu
-durumda Game Center yalnızca kimlik doğrulama için kullanılır. Hesap verileri kendi
-işlettiğimiz oyun sunucularında (Nakama; konum: {{SUNUCU_ULKE}}) saklanır.</p>
+bağlı olarak <strong>Apple ile Giriş</strong> (Sign in with Apple, iOS) kullanabilirsiniz:
+bu durumda Apple'ın verdiği, uygulamamıza özgü anonim kullanıcı kimliği hesabınıza
+bağlanır. Apple'dan <strong>e-posta adresinizi veya adınızı istemeyiz</strong> (istek
+kapsamı boştur). Hesap silme sırasında Apple bağlantınız Apple nezdinde de iptal edilir
+(token iptali). Hesap verileri kendi işlettiğimiz oyun sunucularında (Nakama; konum:
+Almanya, Hetzner Online GmbH) saklanır. Oyun ile sunucu arasındaki şifreli bağlantı
+hizmet sağlayıcımız Cloudflare, Inc. tarafından sonlandırılıp sunucuya iletilir;
+Cloudflare bu trafiği (IP adresiniz dahil) yalnız bizim adımıza iletim ve güvenlik için işler.</p>
 
 <h2>Satın almalar</h2>
 <p>Uygulama içi satın almalar Apple App Store (StoreKit) veya Google Play üzerinden
@@ -86,7 +93,7 @@ işleyişi içindir. Çocuğunuza ait bir hesap olduğunu düşünüyorsanız
 
 <h1>Sultan Siege — Privacy Policy</h1>
 <p>Publisher: {{YAYINCI_ADI}} · {{ADRES}}</p>
-<p>Last updated: October 9, 2026</p>
+<p>Last updated: October 25, 2026</p>
 <p><a href="index.html">&larr; Home</a> · <a href="destek.html">Support</a> ·
 <a href="hesap_silme.html">Account Deletion</a></p>
 
@@ -95,7 +102,8 @@ işleyişi içindir. Çocuğunuza ait bir hesap olduğunu düşünüyorsanız
 run the game. We use <strong>no advertising SDKs</strong>, we do <strong>not</strong>
 track you across apps or for advertising/analytics purposes, and we do <strong>not</strong>
 collect or share advertising identifiers (IDFA / Google advertising ID). This version
-does not request tracking permission (ATT).</p>
+does not request tracking permission (ATT). This version <strong>collects no analytics
+data</strong>: nothing is sent to any analytics or measurement service (including GameAnalytics).</p>
 
 <h2>Data we collect and why</h2>
 <ul>
@@ -116,9 +124,15 @@ advertising or analytics.</p>
 
 <h2>Account and sign-in</h2>
 <p>Your game account is a guest account created automatically from your device
-identifier. Optionally you can link it with Apple's Game Center (iOS); Game Center is
-used only for authentication. Account data is stored on game servers we operate
-(Nakama; located in: {{SUNUCU_ULKE}}).</p>
+identifier. Optionally you can use <strong>Sign in with Apple</strong> (iOS): the
+anonymous, app-specific user identifier provided by Apple is linked to your account.
+We do <strong>not request your email address or name</strong> from Apple (the request
+scope is empty). When you delete your account, the Apple link is also revoked with
+Apple (token revocation). Account data is stored on game servers we operate (Nakama;
+located in Germany, Hetzner Online GmbH). The encrypted connection between the game and
+the server is terminated by our service provider Cloudflare, Inc. and forwarded to the
+server; Cloudflare processes this traffic (including your IP address) only on our behalf,
+for transmission and security.</p>
 
 <h2>Purchases</h2>
 <p>In-app purchases are processed through the Apple App Store (StoreKit) or Google
